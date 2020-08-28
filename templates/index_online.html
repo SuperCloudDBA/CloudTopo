@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>the test for network topology</title>
+<!-- 新 Bootstrap4 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/my.css') }}" type="text/css"/>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+<!--ContextMenu实现右键效果-->
+<!--<script src="js/static/bootstrap-contextmenu.js"></script>-->
+<!--<script src="js/static/prettify.js"></script>-->
+
+
+<body>
+<header class="navbar navbar-static-top bs-docs-nav" id="top">
+    <div class="container">
+    </div>
+
+</header>
+
+<div class="container-fluid">
+    <li class="list-group-item">
+        <div class="row">
+            <!--        导航栏目-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+                <div class="jtopo_toolbar">
+                    <div class="row justify-content-md-center">
+                        <button class="btn btn-primary my-2 my-sm-0" id="upLoadImage">
+                            添加云产品
+                        </button>
+                        <div class="col-md-auto">
+                            <button class="btn btn-outline-secondary my-2 my-sm-0"
+                                    id="centerButton">
+                                居中显示
+                            </button>
+                            <button class="btn btn-outline-secondary my-2 my-sm-0"
+                                    id="fullScreenButton">
+                                全屏显示
+                            </button>
+                            <button class="btn btn-outline-secondary my-2 my-sm-0"
+                                    id="zoomOutButton"> 放
+                                大
+                            </button>
+                            <button class="btn btn-outline-secondary my-2 my-sm-0"
+                                    id="zoomInButton"> 缩
+                                小
+                            </button>
+                        </div>
+
+                        <div class="col-md-auto">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"
+                                       name="inlineRadioOptions"
+                                       id="r1"
+                                       value="normal" field_signature="794847653"
+                                       form_signature="11982432447439259621">
+                                <label class="form-check-label" for="r1">默认</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"
+                                       name="inlineRadioOptions"
+                                       id="r2"
+                                       value="normal" field_signature="794847653"
+                                       form_signature="11982432447439259621">
+                                <label class="form-check-label" for="r2">框选</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"
+                                       name="inlineRadioOptions"
+                                       id="r4"
+                                       value="normal" field_signature="794847653"
+                                       form_signature="11982432447439259621">
+                                <label class="form-check-label" for="r4">加线</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox"
+                                       id="zoomCheckbox"
+                                       field_signature="1647903565"
+                                       form_signature="11982432447439259621">
+                                <label class="form-check-label"
+                                       for="zoomCheckbox">鼠标缩放</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-auto">
+                            <div class="form-inline my-2 my-lg-0">
+                                <input id="findText" class="form-control mr-sm-2"
+                                       type="search"
+                                       placeholder="Search"
+                                       value onkeydown="enterPressHandler(event)"
+                                       field_signature="2291321549"
+                                       form_signature="11982432447439259621"
+                                       aria-label="Search">
+                                <button class="btn btn-outline-secondary my-2 my-sm-0"
+                                        id="findButton">
+                                    搜索
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-auto">
+                            <button class="btn btn-primary my-2 my-sm-0" id="exportButton">
+                                导出PNG
+                            </button>
+                        </div>
+                        <div class="col-md-auto">
+                            <button class="btn btn-primary my-2 my-sm-0" id="saveJsonStr">
+                                SaveJson
+                            </button>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </nav>
+        </div>
+
+        <!--做图区域-->
+        <div class="row">
+            <canvas id='Jtopo' style="border: solid 1px rgba(0,0,0,.125)"></canvas>
+        </div>
+        <!--结束作图-->
+    </li>
+
+    <!--    加载不通的js文件就可以获得不一样的架构图-->
+    <!--   所有云实例自动画图-->
+    <!--    <script src="js/dynamic/instance.js"></script>-->
+    <!--   测试-->
+
+
+    <textarea id="jtopo_textfield" style="display:none;width: 60px;position: absolute;"
+              onkeydown="if(event.keyCode==13)this.blur();"></textarea>
+
+    <div class="right">
+        <div id="content">
+            <canvas id="canvas">sorry,your browser do not support canvas label</canvas>
+        </div>
+    </div>
+    <ul id="uploadmenu" style="display:none;">
+        <li class="li1"><a>阿里云产品</a>
+            <ul class="nav1 lili">
+                <li id="slb.png">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 w-100 bd-highlight"><span>SLB</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/slb.png"></div>
+                    </div>
+                </li>
+                <li id="ecs.png">
+                    <div class="d-flex justify-content-center">
+                        <div class="p-2 w-100 bd-highlight"><span>ECS</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/ecs.png"></div>
+                    </div>
+                </li>
+                <li id="rds_mysql.png">
+                    <div class="d-flex justify-content-center">
+                        <div class="p-2 w-100 bd-highlight"><span>RDS MySQL</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/rds_mysql.png"></div>
+                    </div>
+                </li>
+                <li id="rds_sqlserver.png">
+                    <div class="d-flex justify-content-center">
+                        <div class="p-2 w-100 bd-highlight"><span>RDS SQLServer</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/rds_sqlserver.png"></div>
+                    </div>
+                </li>
+                <li id="rds_postgresql.png">
+                    <div class="d-flex justify-content-center">
+                        <div class="p-2 w-100 bd-highlight"><span>RDS PSQL</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/rds_postgresql.png"></div>
+                    </div>
+                </li>
+                <li id="rds_ppas.png">
+                    <div class="d-flex justify-content-center">
+                        <div class="p-2 w-100 bd-highlight"><span>RDS PPAS</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/rds_ppas.png"></div>
+                    </div>
+                </li>
+                <li id="rds_mariadb.png">
+                    <div class="d-flex justify-content-center">
+                        <div class="p-2 w-100 bd-highlight"><span>RDS Mariadb</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/rds_mariadb.png"></div>
+                    </div>
+                </li>
+
+                <li id="polardb.png">
+                    <div class="d-flex justify-content-center">
+                        <div class="p-2 w-100 bd-highlight"><span>PolarDB</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/polardb.png"></div>
+                    </div>
+                </li>
+
+                <li id="mongodb.png">
+                    <div class="d-flex justify-content-center">
+                        <div class="p-2 w-100 bd-highlight"><span>MongoDB</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/mongodb.png"></div>
+                    </div>
+                </li>
+
+                <li id="redis.png">
+                    <div class="d-flex justify-content-around">
+                        <div class="p-2 w-100 bd-highlight"><span>Redis</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/redis.png"></div>
+                    </div>
+                </li>
+
+                <li id="drds.png">
+                    <div class="d-flex justify-content-around">
+                        <div class="p-2 w-100 bd-highlight"><span>DRDS</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/drds.png"></div>
+                    </div>
+                </li>
+                <li id="dts.png">
+                    <div class="d-flex justify-content-around">
+                        <div class="p-2 w-100 bd-highlight"><span>DTS</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/dts.png"></div>
+                    </div>
+                </li>
+                <li id="database.png">
+                    <div class="d-flex justify-content-around">
+                        <div class="p-2 w-100 bd-highlight"><span>其他</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/database.png"></div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li class="li2"><a>业 务</a>
+            <ul class="nav2 lili">
+                <li id="通用业务.png">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 w-100 bd-highlight"><span>通用业务</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/通用业务.png"></div>
+                    </div>
+                </li>
+                <li id="官网.png">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 w-100 bd-highlight"><span>企业官网</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/官网.png"></div>
+                    </div>
+                </li>
+                <li id="电商.png">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 w-100 bd-highlight"><span>电商平台</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/电商.png"></div>
+                    </div>
+                </li>
+                <li id="税务管理系统.png">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 w-100 bd-highlight"><span>税务管理系统</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/税务管理系统.png"></div>
+                    </div>
+                </li>
+                <li id="财务核算系统.png">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 w-100 bd-highlight"><span>财务管理系统</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/财务核算系统.png"></div>
+                    </div>
+                </li>
+                <li id="运维管理系统.png">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 w-100 bd-highlight"><span>运维管理系统</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/运维管理系统.png"></div>
+                    </div>
+                </li>
+                <li id="容灾备份管理系统.png">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 w-100 bd-highlight"><span>容灾备份管理系统</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/容灾备份管理系统.png"></div>
+                    </div>
+                </li>
+                <li id="博客系统.png">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 w-100 bd-highlight"><span>博客系统</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/博客系统.png"></div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li class="li3"><a>环 境</a>
+            <ul class="nav3 lili">
+                <li id="prd.png">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 w-100 bd-highlight"><span>生产环境 PROD</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/prd.png"></div>
+                    </div>
+                </li>
+                <li id="uat.png">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 w-100 bd-highlight"><span>测试环境 UAT</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/uat.png"></div>
+                    </div>
+                </li>
+                <li id="dev.png">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 w-100 bd-highlight"><span>开发环境 DEV</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/dev.png"></div>
+                    </div>
+                </li>
+                <li id="dr.png">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 w-100 bd-highlight"><span>备份恢复 DR</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/dr.png"></div>
+                    </div>
+                </li>
+                <li id="poc.png">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 w-100 bd-highlight"><span>概念验证 PoC</span></div>
+                        <div class="p-2 bd-highlight"><img src="/static/img/aliyun_img_15/poc.png"></div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul id="contextmenu" style="display:none;">
+        <li><a>查看实例详情</a></li>
+        <li><a>添加连线</a></li>
+        <li><a>添加节点</a></li>
+        <li id="level"><a>设置等级</a>
+            <ul class="lili1 nav4">
+                <li id="1"><span>Level 1</span></li>
+                <li id="2"><span>Level 2</span></li>
+                <li id="3"><span>Level 3</span></li>
+                <li id="4"><span>Level 4</span></li>
+                <li id="5"><span>Level 5</span></li>
+                <li id="6"><span class="nob">Level 6</span></li>
+            </ul>
+        </li>
+        <li id="text"><a>设置文字位置</a>
+            <ul class="lili1 nav5">
+                <li id="Top_Center"><span>上</span></li>
+                <li id="Bottom_Center"><span>下</span></li>
+                <li id="Middle_Left"><span>左</span></li>
+                <li id="Middle_Right"><span>右</span></li>
+                <li id="Middle_Center"><span class="nob">中</span></li>
+            </ul>
+        </li>
+        <li id="alarm"><a>警告</a>
+            <ul class="lili1 nav6">
+                <li id="11"><span>一级告警</span></li>
+                <li id="22"><span>二级告警</span></li>
+                <li id="33"><span>三级告警</span></li>
+                <li id="44"><span class="nob">取消告警</span></li>
+            </ul>
+        </li>
+        <li><a>顺时针旋转</a></li>
+        <li><a>逆时针旋转</a></li>
+        <li><a>放大节点</a></li>
+        <li><a>缩小节点</a></li>
+        <li><a>删除该节点</a></li>
+        <li><a>取消操作</a></li>
+    </ul>
+    <ul id="linkmenu" style="display:none;">
+        <li><a>修改颜色(随机)</a></li>
+        <li><a>改为红色</a></li>
+        <li><a>改为普通颜色</a></li>
+        <li><a>删除连线</a></li>
+        <li><a>取消</a></li>
+    </ul>
+    <script type="text/javascript" src="{{ url_for('static', filename='/js/dynamic/online.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='/js/static/jtopo-0.4.8-min.js') }}"></script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+[
+  {
+    "elementType": "node",
+    "x": 48.08812949640287,
+    "y": 27.014388489208628,
+    "id": 1299.0714119351996,
+    "Image": "mongodb.png",
+    "text": "CERNET",
+    "textPosition": "Bottom_Center",
+    "larm": "undefined",
+    "level": 1
+  },
+  {
+    "elementType": "node",
+    "x": 287.5413669064748,
+    "y": 24.848920863309345,
+    "id": 7145.09267118679,
+    "Image": "redis.png",
+    "text": "chinaet",
+    "textPosition": "Bottom_Center",
+    "larm": "undefined",
+    "level": 1
+  }
+]

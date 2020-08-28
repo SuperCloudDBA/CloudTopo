@@ -1,0 +1,226 @@
+        html, body{
+            font:14px/1.8 Arial,Microsoft YaHei,黑体,宋体,sans-serif;
+            height:100%;
+        }
+        /*菜单选项卡*/
+        *{
+            margin:0;
+            padding:0;
+        }
+        #uploadmenu{
+            list-style: none;
+            position:absolute;
+            left:0;
+            top:29px;
+        }
+        #uploadmenu>li>a{
+            display:block;
+            text-decoration: none;
+            width: 90px;
+            height: 24px;
+            margin-left: 10px;
+            padding-top:4px;
+            line-height:24px;
+            text-align: center;
+            color: #fff;
+            border-top:1px solid #ABA8A8;
+        }
+        #uploadmenu>li>ul>li>a{
+            display:inline-block;
+            width:27px;
+            height:28px;
+            padding-left:9px;
+            padding-right:9px;
+            background: #D1D1D1;
+            border-radius: 5px;
+        }
+        #uploadmenu>li>ul>li>a>img{
+            vertical-align: middle;
+        }
+        .lili li:hover{
+            background: #E9E7E7;
+            border-radius: 2px;
+        }
+        .lili li:active{
+            background:#FFFFFF;
+            border-radius: 0px;
+        }
+        .nob{
+            border-bottom:none !important;
+        }
+        .lili li{
+            height:30px;
+            width:150px!important;
+        }
+        .lili{
+            border-radius:5px;
+            box-shadow: 0 0 5px #434343;
+        }
+        #uploadmenu .li1>a{
+            border: none;
+        }
+        .li1, .li2, .li3{
+        background:#FFFFFF;
+            border-radius: 3px;
+            left: 10px;
+            width: 100px;
+            height: 36px;
+            background: #666666;
+            position:relative;
+            cursor: pointer;
+         }
+        .li3{
+            border-radius:0 0 5px 5px;
+         }
+        .nav1, .nav2, .nav3{
+            list-style: none;
+            position:absolute;
+            left: 100px;
+            top: 0px;
+            display: none;
+          }
+        .li1:hover .nav1{
+            display:block;
+            background-color: #C5C5C5;
+        }
+        .li2:hover .nav2{
+            display:block;
+            background-color: #C5C5C5;
+        }
+        .li3:hover .nav3{
+            display:block;
+            background-color:#C5C5C5;
+        }
+        .lili1 li{
+            height:30px;
+            width:100px!important;
+        }
+        .lili1 li:hover{
+            background: #E9E7E7;
+            border-radius: 5px;
+        }
+        .lili1 li:active{
+            background:#FFFFFF;
+            border-radius: 0px;
+        }
+        .lili1{
+            border-radius:5px;
+            box-shadow: 0 0 5px #434343;
+        }
+        .lili1 li span{
+            display:inline-block;
+            height:30px;
+            line-height: 30px;
+            text-align: center;
+            width:70px;
+            margin-left: 10px;
+            border-bottom: 1px #ADABAB solid;
+        }
+        .nav4, .nav5, .nav6{
+            list-style: none;
+            position:absolute;
+            left: 123px;
+            top: 0px;
+            display: none;
+            cursor:pointer;
+        }
+        #level:hover .nav4{
+            display:block;
+            background-color:#C5C5C5;
+        }
+        #text:hover .nav5{
+            display:block;
+            background-color:#C5C5C5;
+        }
+        #alarm:hover .nav6{
+            display:block;
+            background-color:#C5C5C5;
+        }
+        #contextmenu {
+            width:122px;
+            border: 1px solid #aaa;
+            border-radius:7px;
+            border-bottom: 0;
+            background: #eee;
+            position: absolute;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: none;
+            box-shadow: 0 0 5px #434343;
+        }
+        #contextmenu li{
+            width:122px;
+            position:relative;
+        }
+
+        #contextmenu li a {
+            height:30px;
+            line-height: 30px;
+            width:100px;
+            margin-left: 11px;
+            text-align: center;
+            display: block;
+            border-bottom: 1px solid #aaa;
+            cursor: pointer;
+
+        }
+
+        #contextmenu>li:hover {
+            background: #fff;
+            border-radius:7px;
+        }
+        #linkmenu {
+            width:122px;
+            border: 1px solid #aaa;
+            border-radius:7px;
+            border-bottom: 0;
+            background: #eee;
+            position: absolute;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: none;
+            box-shadow: 0 0 5px #434343;
+        }
+        #linkmenu li {
+            width:122px;
+        }
+        #linkmenu li a {
+            width:100px;
+            height:30px;
+            line-height: 30px;
+            display: block;
+            border-bottom: 1px solid #aaa;
+            cursor: pointer;
+            margin-left: 11px;
+            text-align: center;
+        }
+
+        #linkmenu li:hover {
+            background: #fff;
+            border-radius:7px;
+        }
+        /*button*/
+        .jtopo_toolbar{
+            height:30px;
+        }
+        input[type="button"]{
+            display: inline-block;
+            outline: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font: 10px/100% Arial, Helvetica, sans-serif;
+            padding: .5em 1em .55em;
+            -webkit-border-radius: .3em;
+            -moz-border-radius: .3em;
+            border-radius: .3em;
+            color: #2E2C2C;
+            border: solid 1px #D6D4D4;
+            background: #E4E0E0;
+        }
+        input[type="button"]:hover{
+            background: #CECDCD;
+            border: solid 1px #CECDCD;
+        }

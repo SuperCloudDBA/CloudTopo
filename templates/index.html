@@ -1,0 +1,365 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <table class="table table-borderless">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <div class="d-flex justify-content-center">
+                        <div class="projects-header page-header">
+                            <h2 class="font-weight-normal">填写AK自动感知您的云产品架构</h2>
+                            <p class="font-weight-lighter">请根据提示步骤进行操作，一键生成您的云资产架构图</p>
+                        </div>
+
+                    </div>
+                </td>
+            </tr>
+            <!--            <tr>-->
+            <!--                <td></td>-->
+            <!--            </tr>-->
+            </tbody>
+        </table>
+
+
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="font-weight-lighter">第一步</h6>
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left text-decoration-none" type="button"
+                                        data-toggle="collapse"
+                                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <div class="row">
+                                        <svg t="1595575066433" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="6464" width="128" height="128">
+
+                                            <path d="M96 96h828.48a16 16 0 0 1 16 16v785.312a16 16 0 0 1-16 16H96a16 16 0 0 1-16-16V112a16 16 0 0 1 16-16z"
+                                                  fill="#FFFFFF" p-id="6465"></path>
+                                            <path d="M911.872 104H112V160a32 32 0 0 0 32 32h735.872a32 32 0 0 0 32-32V104z"
+                                                  fill="#24D796"
+                                                  p-id="6466"></path>
+                                            <path d="M120.32 656H896v176a32 32 0 0 1-32 32H152.32a32 32 0 0 1-32-32V656z"
+                                                  fill="#A5F2DA"
+                                                  p-id="6467"></path>
+                                            <path d="M656 720h224v32H656zM910.112 80H113.888A49.936 49.936 0 0 0 64 130V256h96v-32H96V130C96 120.048 104.016 112 113.888 112h796.24C919.984 112 928 120.048 928 130V224h-64v32h96V130A49.936 49.936 0 0 0 910.112 80z"
+                                                  fill="#203E81" p-id="6468"></path>
+                                            <path d="M864 320h64v558c0 9.952-8.016 18-17.888 18H113.888A17.936 17.936 0 0 1 96 878V320h64v-32H64v590A49.936 49.936 0 0 0 113.888 928h796.24C937.68 928 960 905.6 960 878V288h-96v32z"
+                                                  fill="#203E81" p-id="6469"></path>
+                                            <path d="M656 784h224v32H656zM368 720h32v32h-32zM176 720h32v32h-32zM272 720h32v32h-32zM332.4 416.432c4.592-1.056 29.76-6.528 75.488-16.416L416 368h-87.984A56 56 0 0 0 272 423.776v112.432A56.016 56.016 0 0 0 328.016 592H416l-8.096-32.016-75.488-16.416a15.984 15.984 0 0 1-12.368-14.896c-0.032-0.208-0.032-97.136 0-97.328a15.952 15.952 0 0 1 12.352-14.912zM691.6 543.568l-75.504 16.416L608 592h87.984A56 56 0 0 0 752 536.208v-112.432A55.984 55.984 0 0 0 695.984 368H608l8.096 32 75.504 16.416a15.984 15.984 0 0 1 12.368 14.912c0.032 0.208 0.032 97.12 0 97.328a15.984 15.984 0 0 1-12.368 14.912zM464 464h96v31.728h-96zM208 224h608v32H208z"
+                                                  fill="#203E81" p-id="6470"></path>
+                                        </svg>
+                                    </div>
+                                    <a class="nav-link" target="_blank">填写阿里云AK</a>
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseOne" class="{{ show }}" aria-labelledby="headingOne"
+                             data-parent="#accordionExample">
+                            <div class="card-body">
+                                <p class="font-weight-lighter">为了您的数据安全，我们只接受您的具有只读权限的子账号 Access Key</p>
+                                <form class="form-horizontal" method="post" name="form1">
+                                    <div class="form-group row">
+                                        <label for="inputAccessKeyId" class="col-sm-4 col-form-label">Id</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="inputAccessKeyId"
+                                                   name="inputAccessKeyId">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputAccessKeySecret" class="col-sm-4 col-form-label">Secret</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="inputAccessKeySecret"
+                                                   name="inputAccessKeySecret">
+                                        </div>
+                                    </div>
+                                    <p class="font-weight-lighter">选择您需要的云产品类型</p>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox_slb"
+                                               name="inlineCheckbox_slb"
+                                               value="slb">
+                                        <label class="form-check-label" for="inlineCheckbox_slb">slb</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox_ecs"
+                                               name="inlineCheckbox_ecs"
+                                               value="ecs">
+                                        <label class="form-check-label" for="inlineCheckbox_ecs">ecs</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox_rds"
+                                               name="inlineCheckbox_rds"
+                                               value="rds">
+                                        <label class="form-check-label" for="inlineCheckbox_rds">rds</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox_polardb"
+                                               name="inlineCheckbox_polardb"
+                                               value="polardb">
+                                        <label class="form-check-label" for="inlineCheckbox_polardb">polardb</label>
+                                    </div>
+                                     <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox_rds_dbs"
+                                               name="inlineCheckbox_rds_dbs"
+                                               value="rds_dbs">
+                                        <label class="form-check-label" for="inlineCheckbox_rds_dbs">rds_dbs</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox_polardb_dbs"
+                                               name="inlineCheckbox_polardb_dbs"
+                                               value="polardb_dbs">
+                                        <label class="form-check-label" for="inlineCheckbox_polardb_dbs">polardb_dbs</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox_redis"
+                                               name="inlineCheckbox_redis"
+                                               value="redis">
+                                        <label class="form-check-label" for="inlineCheckbox_redis">redis</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox_mongodb"
+                                               name="inlineCheckbox_mongodb"
+                                               value="mongodb">
+                                        <label class="form-check-label" for="inlineCheckbox_mongodb">mongodb</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox_dts_sync"
+                                               name="inlineCheckbox_dts_sync"
+                                               value="dts_sync">
+                                        <label class="form-check-label" for="inlineCheckbox_dts_sync">dts_sync</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox_dts_migrate"
+                                               name="inlineCheckbox_dts_migrate"
+                                               value="dts_migrate">
+                                        <label class="form-check-label" for="inlineCheckbox_dts_migrate">dts_migrate</label>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                        <div class="offset-md-9">
+                                            <button onclick="myFunction()" class="btn btn-primary" {{ disabled }}>提交
+                                            </button>
+                                        </div>
+
+                                        <small><p class="font-weight-lighter font-italic">Access Key 可以在您的阿里云 RAM
+                                            账号中找到，详细步骤请<a target="_blank"
+                                                          href="https://help.aliyun.com/document_detail/116401.html?spm=a2c4g.11186623.6.683.52401e2aqxn0W0">点击这里查看帮助</a>
+                                            <p></small>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <h6 class="font-weight-lighter">第二步</h6>
+                <div class="accordion" id="accordionExample2">
+                    <div class="card">
+                        <div class="card-header" id="heading2">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left text-decoration-none" type="button"
+                                        data-toggle="collapse"
+                                        data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                                    <div class="row">
+                                        <svg t="1595576703545" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="9859" width="128" height="128">
+                                            <path d="M829.68893465 359.94375777a349.44 349.44 0 0 1 33.71485133 132.37038944 32 32 0 0 0 63.80931593-3.62038672 413.76 413.76 0 0 0-40.05052808-156.35545145 32 32 0 0 0-6.10940259-8.82469263 32 32 0 0 0-51.36423659 36.43014136zM783.52900398 272.60192816A32 32 0 0 0 806.15642097 263.09841302a32 32 0 0 0 6.7882251-10.40861182 37.12 37.12 0 0 0 2.71529004-12.21880518 36.8 36.8 0 0 0-2.71529004-12.21880517 30.08 30.08 0 0 0-17.19683692-17.19683692 28.8 28.8 0 0 0-24.43761035 0A32 32 0 0 0 760.90158698 217.84357903a32 32 0 0 0 22.627417 54.75834913z"
+                                                  fill="#f59207" p-id="9860"></path>
+                                            <path d="M172.58874503 851.41125497l45.254834-45.254834A416 416 0 0 0 913.86292588 619.70650491a32 32 0 1 0-61.7728484-16.51801441A352 352 0 0 1 263.09841302 760.90158698l45.254834-45.254834a288 288 0 0 1 0-407.29350596l-45.254834-45.254834a352 352 0 0 1 400.73155504-69.01362184 32 32 0 1 0 27.37917456-57.69991335A416 416 0 0 0 217.84357903 217.84357903l-45.254834-45.254834A480 480 0 0 0 172.58874503 851.41125497z"
+                                                  fill="#08b3f4" p-id="9861"></path>
+                                        </svg>
+                                    </div>
+                                    <a class="nav-link" target="_blank">下载表格</a>
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapse2" class="{{ show }}" aria-labelledby="heading2"
+                             data-parent="#accordionExample2">
+                            <div class="card-body">
+                                <p class="font-weight-lighter">你猜，我真的在后台工作吗？</p>
+<!--                                <div class="progress">-->
+<!--                                    <div class="progress-bar progress-bar-striped progress-bar-animated"-->
+<!--                                         role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"-->
+<!--                                         style="width: 75%"></div>-->
+<!--                                </div>-->
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p class="font-weight-lighter">
+                                            {% for row in log_strings %}
+                                            {{ row }}<br/>
+                                            {% endfor %}
+                                        </p>
+                                        <form class="form-horizontal" method="post">
+                                            <div class="form-group row">
+                                                <div class="offset-md-3">
+                                                    <button type="submit" class="btn btn-primary" name="download"
+                                                            value="{{ check }}" {{ download_active }}>下载云产品信息
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <h6 class="font-weight-lighter">第三步</h6>
+                <div class="accordion" id="accordionExample3">
+                    <div class="card">
+                        <div class="card-header" id="heading3">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left text-decoration-none" type="button"
+                                        data-toggle="collapse"
+                                        data-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                                    <div class="row">
+                                        <svg t="1595576804556" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="12096" width="128" height="128">
+                                            <path d="M325.6 106.9h409.9c11 0 20 9 20 20v270.9c0 11-9 20-20 20H325.6c-11 0-20-9-20-20V126.9c0-11 8.9-20 20-20z"
+                                                  fill="#FFDF00" p-id="12097"></path>
+                                            <path d="M725.5 427.8H295.6c-16.5 0-30-13.5-30-30V260.3c0-5.5 4.5-10 10-10s10 4.5 10 10v137.5c0 5.5 4.5 10 10 10h429.9c5.5 0 10-4.5 10-10V126.9c0-5.5-4.5-10-10-10H295.6c-5.5 0-10 4.5-10 10v12.9c0 5.5-4.5 10-10 10s-10-4.5-10-10v-12.9c0-16.5 13.5-30 30-30h429.9c16.5 0 30 13.5 30 30v270.9c0 16.5-13.5 30-30 30z"
+                                                  fill="#222222" p-id="12098"></path>
+                                            <path d="M275 201.3m-16 0a16 16 0 1 0 32 0 16 16 0 1 0-32 0Z" fill="#222222"
+                                                  p-id="12099"></path>
+                                            <path d="M122.7 672h175.7c11 0 20 8.9 20 20v206.6c0 11-8.9 20-20 20H122.7c-11 0-20-8.9-20-20V692c0-11 8.9-20 20-20z"
+                                                  fill="#22B4FF" p-id="12100"></path>
+                                            <path d="M288.4 928.6H92.7c-16.5 0-30-13.5-30-30V692c0-16.5 13.5-30 30-30h195.7c16.5 0 30 13.5 30 30v206.6c0 16.5-13.5 30-30 30zM92.7 682c-5.5 0-10 4.5-10 10v206.6c0 5.5 4.5 10 10 10h195.7c5.5 0 10-4.5 10-10V692c0-5.5-4.5-10-10-10H92.7z"
+                                                  fill="#222222" p-id="12101"></path>
+                                            <path d="M442.7 672h175.7c11 0 20 8.9 20 20v206.6c0 11-8.9 20-20 20H442.7c-11 0-20-8.9-20-20V692c0-11 8.9-20 20-20z"
+                                                  fill="#EB6877" p-id="12102"></path>
+                                            <path d="M608.4 928.6H412.7c-16.5 0-30-13.5-30-30V692c0-16.5 13.5-30 30-30h195.7c16.5 0 30 13.5 30 30v206.6c0 16.5-13.5 30-30 30zM412.7 682c-5.5 0-10 4.5-10 10v206.6c0 5.5 4.5 10 10 10h195.7c5.5 0 10-4.5 10-10V692c0-5.5-4.5-10-10-10H412.7z"
+                                                  fill="#222222" p-id="12103"></path>
+                                            <path d="M762.7 672h175.7c11 0 20 8.9 20 20v206.6c0 11-8.9 20-20 20H762.7c-11 0-20-8.9-20-20V692c0-11 8.9-20 20-20z"
+                                                  fill="#57EBBF" p-id="12104"></path>
+                                            <path d="M928.4 928.6H732.7c-16.5 0-30-13.5-30-30V692c0-16.5 13.5-30 30-30h195.7c16.5 0 30 13.5 30 30v206.6c0 16.5-13.5 30-30 30zM732.7 682c-5.5 0-10 4.5-10 10v206.6c0 5.5 4.5 10 10 10h195.7c5.5 0 10-4.5 10-10V692c0-5.5-4.5-10-10-10H732.7zM188 630.3c-5.5 0-10-4.5-10-10v-67c0-5.5 4.5-10 10-10h646c5.5 0 10 4.5 10 10v64c0 5.5-4.5 10-10 10s-10-4.5-10-10v-54H198v57c0 5.5-4.5 10-10 10z"
+                                                  fill="#222222" p-id="12105"></path>
+                                            <path d="M501 630.3c-5.5 0-10-4.5-10-10v-147c0-5.5 4.5-10 10-10s10 4.5 10 10v147c0 5.5-4.5 10-10 10z"
+                                                  fill="#222222" p-id="12106"></path>
+                                            <path d="M437.6 200.4c10.3 0 18.6 8.3 18.6 18.5 0 10.3-8.3 18.6-18.5 18.7-10.3 0-18.6-8.3-18.7-18.5v-0.1c0-10.3 8.3-18.6 18.6-18.6z m146.9 0c10.3 0 18.6 8.3 18.6 18.5 0 10.3-8.3 18.6-18.5 18.7-10.3 0-18.6-8.3-18.7-18.5v-0.1c0-10.3 8.3-18.6 18.6-18.6zM558.2 282.8c-8 26.1-35.7 40.8-61.8 32.8-15.8-4.8-28.1-17.3-32.9-33.1 7.2 0 70.6 0.3 94.7 0.3z"
+                                                  fill="#222222" p-id="12107"></path>
+                                            <path d="M510.9 320.8c-5.2 0-10.3-0.8-15.4-2.3-16.7-5.1-29.8-18.2-34.9-35.1-0.3-0.9-0.1-1.9 0.5-2.7s1.5-1.2 2.4-1.2c2.5 0 12.1 0 24.5 0.1 23.1 0.1 54.6 0.2 70.2 0.2 1 0 1.8 0.5 2.4 1.2s0.7 1.8 0.5 2.7c-4.1 13.4-13.2 24.4-25.6 31-7.7 4-16.1 6.1-24.6 6.1z m-43.2-35.3c5.2 13.1 16 23.1 29.5 27.2 23.2 7.1 47.7-4.9 56.7-26.9-16.6 0-44.9-0.1-66-0.2-8.5 0-15.7-0.1-20.2-0.1z"
+                                                  fill="#222222" p-id="12108"></path>
+                                            <path d="M510.9 294.5c14.2 0 26.6 4.2 33.3 10.3-18.9 17.3-47.8 17.3-66.6 0 6.7-6.2 19.1-10.3 33.3-10.3z"
+                                                  fill="#FF1834" p-id="12109"></path>
+                                            <path d="M229.5 491.4c-1.4 0-2.8-0.7-3.5-2.1l-15.8-28.4c-1.1-1.9-0.4-4.4 1.6-5.4 1.9-1.1 4.4-0.4 5.4 1.6l15.8 28.4c1.1 1.9 0.4 4.4-1.6 5.4-0.6 0.3-1.2 0.5-1.9 0.5z"
+                                                  fill="#00B7EE" p-id="12110"></path>
+                                            <path d="M207.4 485.1c-1.4 0-2.8-0.7-3.5-2.1-1.1-1.9-0.4-4.4 1.6-5.4l28.4-15.8c1.9-1.1 4.4-0.4 5.4 1.6 1.1 1.9 0.4 4.4-1.6 5.4l-28.4 15.8c-0.6 0.3-1.2 0.5-1.9 0.5z"
+                                                  fill="#00B7EE" p-id="12111"></path>
+                                            <path d="M893.8 149.8c-1.8 0-3.4-1.2-3.9-3l-6.3-23.4c-0.6-2.1 0.7-4.3 2.8-4.9s4.3 0.7 4.9 2.8l6.3 23.4c0.6 2.1-0.7 4.3-2.8 4.9-0.3 0.2-0.7 0.2-1 0.2z"
+                                                  fill="#ACD598" p-id="12112"></path>
+                                            <path d="M879 141.3c-1.8 0-3.4-1.2-3.9-3-0.6-2.1 0.7-4.3 2.8-4.9l23.4-6.3c2.1-0.6 4.3 0.7 4.9 2.8 0.6 2.1-0.7 4.3-2.8 4.9l-23.4 6.3c-0.3 0.2-0.7 0.2-1 0.2z"
+                                                  fill="#ACD598" p-id="12113"></path>
+                                            <path d="M876.5 337.5c-0.8 0-1.6-0.2-2.3-0.8l-24.7-17.8c-1.8-1.3-2.2-3.8-0.9-5.6 1.3-1.8 3.8-2.2 5.6-0.9l24.7 17.8c1.8 1.3 2.2 3.8 0.9 5.6-0.8 1.1-2.1 1.7-3.3 1.7z"
+                                                  fill="#FFF100" p-id="12114"></path>
+                                            <path d="M855.3 340.9c-0.8 0-1.6-0.2-2.3-0.7-1.8-1.3-2.2-3.8-0.9-5.6l17.7-24.7c1.3-1.8 3.8-2.2 5.6-0.9 1.8 1.3 2.2 3.8 0.9 5.6l-17.7 24.7c-0.8 1-2.1 1.6-3.3 1.6z"
+                                                  fill="#FFF100" p-id="12115"></path>
+                                            <path d="M45.5 323.2c-6.6 0-12-5.4-12-12s5.4-12 12-12 12 5.4 12 12-5.4 12-12 12z m0-19.2c-4 0-7.2 3.2-7.2 7.2s3.2 7.2 7.2 7.2 7.2-3.2 7.2-7.2-3.2-7.2-7.2-7.2z"
+                                                  fill="#E898EA" p-id="12116"></path>
+                                            <path d="M946.8 502.7c-6.1 0-11-4.9-11-11s4.9-11 11-11 11 4.9 11 11-4.9 11-11 11z m0-17.4c-3.5 0-6.4 2.8-6.4 6.4s2.8 6.4 6.4 6.4 6.4-2.8 6.4-6.4-2.9-6.4-6.4-6.4z"
+                                                  fill="#7EDDDC" p-id="12117"></path>
+                                            <path d="M103 437.3m-8 0a8 8 0 1 0 16 0 8 8 0 1 0-16 0Z" fill="#F6B37F"
+                                                  p-id="12118"></path>
+                                            <path d="M961 382.3m-6 0a6 6 0 1 0 12 0 6 6 0 1 0-12 0Z" fill="#D3D462"
+                                                  p-id="12119"></path>
+                                            <path d="M255 57.3m-4 0a4 4 0 1 0 8 0 4 4 0 1 0-8 0Z" fill="#FF455C"
+                                                  p-id="12120"></path>
+                                            <path d="M51.3 118.7m-6 0a6 6 0 1 0 12 0 6 6 0 1 0-12 0Z" fill="#71E7DB"
+                                                  p-id="12121"></path>
+                                            <path d="M168.1 126.2c-3.5 0-7.2-1.3-9.9-4.1-2.7-2.6-4.1-6.1-4.1-9.8s1.5-7.3 4.1-9.9l1.8 1.8-1.8-1.8c5.4-5.4 14.3-5.4 19.7 0 5.4 5.4 5.4 14.3 0 19.8-2.7 2.7-6.3 4-9.8 4z m-6.4-20.2c-1.7 1.7-2.7 3.9-2.7 6.3 0 2.3 1 4.6 2.6 6.2 3.5 3.4 9.1 3.5 12.6 0 3.4-3.5 3.4-9.1 0-12.5-3.3-3.4-9-3.4-12.5 0z"
+                                                  fill="#FF8A8A" p-id="12122"></path>
+                                            <path d="M959 275.4c-8.3 0-15-6.7-15-15s6.7-15 15-15 15 6.7 15 15-6.7 15-15 15z m0-24.8c-5.4 0-9.8 4.4-9.8 9.8s4.4 9.8 9.8 9.8 9.8-4.4 9.8-9.8-4.4-9.8-9.8-9.8z"
+                                                  fill="#B3D465" p-id="12123"></path>
+                                            <path d="M912 585.3m-8 0a8 8 0 1 0 16 0 8 8 0 1 0-16 0Z" fill="#CC9EE1"
+                                                  p-id="12124"></path>
+                                            <path d="M108.5 38.8m-3.5 0a3.5 3.5 0 1 0 7 0 3.5 3.5 0 1 0-7 0Z"
+                                                  fill="#D3A884" p-id="12125"></path>
+                                            <path d="M920.5 51.8m-3.5 0a3.5 3.5 0 1 0 7 0 3.5 3.5 0 1 0-7 0Z"
+                                                  fill="#D3A884" p-id="12126"></path>
+                                            <path d="M220.5 211.8m-3.5 0a3.5 3.5 0 1 0 7 0 3.5 3.5 0 1 0-7 0Z"
+                                                  fill="#22B4FF" p-id="12127"></path>
+                                            <path d="M704.5 286.8m-7.5 0a7.5 7.5 0 1 0 15 0 7.5 7.5 0 1 0-15 0Z"
+                                                  fill="#F2ED62" p-id="12128"></path>
+                                            <path d="M827 463.1c-5.6 0-10.8-2.2-14.7-6.1-3.9-3.9-6.1-9.1-6.1-14.7 0-5.5 2.2-10.8 6.1-14.7 3.9-3.9 9.1-6.1 14.7-6.1h0.1c5.5 0 10.7 2.2 14.6 6.1 3.9 3.9 6.1 9.1 6.1 14.7s-2.2 10.8-6.1 14.7c-3.9 3.9-9.2 6.1-14.7 6.1z m-10.4-30.9c-2.7 2.8-4.1 6.3-4.1 10.1 0 3.9 1.5 7.5 4.3 10.3s6.4 4.3 10.2 4.3h0.1c3.9 0 7.6-1.5 10.4-4.3 2.8-2.7 4.3-6.4 4.2-10.3 0-3.9-1.5-7.6-4.3-10.4-2.7-2.8-6.4-4.2-10.2-4.3h-0.1c-3.9 0-7.6 1.5-10.4 4.3l-0.1 0.3z"
+                                                  fill="#EFAD62" p-id="12129"></path>
+                                            <path d="M789.3 69.2m-8 0a8 8 0 1 0 16 0 8 8 0 1 0-16 0Z" fill="#EBB4BE"
+                                                  p-id="12130"></path>
+                                            <path d="M78.9 583.2c-0.1 0-0.1 0 0 0-5.1 0-9.9-2-13.4-5.6-3.6-3.5-5.6-8.2-5.6-13.3s2-9.9 5.6-13.5c3.6-3.6 8.4-5.6 13.5-5.6h0.1c5.1 0 9.8 2 13.3 5.6 3.6 3.6 5.6 8.4 5.6 13.5s-2 9.8-5.6 13.3c-3.7 3.6-8.5 5.6-13.5 5.6z m-7.8-26.8c-2.1 2.1-3.3 4.9-3.3 7.9 0 2.9 1.2 5.6 3.2 7.7 2.1 2.1 4.8 3.3 7.7 3.3 2.9 0 5.7-1.2 7.8-3.3 2.1-2.1 3.2-4.8 3.3-7.7 0-3-1.1-5.7-3.3-7.9-2.1-2.1-4.8-3.2-7.7-3.3-2.8 0.1-5.6 1.2-7.7 3.3z"
+                                                  fill="#FF8A8A" p-id="12131"></path>
+                                            <path d="M817.2 201.8m-9 0a9 9 0 1 0 18 0 9 9 0 1 0-18 0Z" fill="#A657FF"
+                                                  p-id="12132"></path>
+                                            <path d="M192 365.3c-13.2 0-24-10.8-24-24s10.8-24 24-24 24 10.8 24 24-10.8 24-24 24z m0-40c-8.8 0-16 7.2-16 16s7.2 16 16 16 16-7.2 16-16-7.2-16-16-16z"
+                                                  fill="#57EBBF" p-id="12133"></path>
+                                            <path d="M963.5 115.8m-7.5 0a7.5 7.5 0 1 0 15 0 7.5 7.5 0 1 0-15 0Z"
+                                                  fill="#FFD200" p-id="12134"></path>
+                                            <path d="M110.5 228.8m-7.5 0a7.5 7.5 0 1 0 15 0 7.5 7.5 0 1 0-15 0Z"
+                                                  fill="#FFD375" p-id="12135"></path>
+                                        </svg>
+                                    </div>
+                                    <a class="nav-link" target="_blank" href="{{ url_for('instances') }}">查看架构</a>
+                                </button>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <h6 class="font-weight-lighter">第四步</h6>
+                <div class="accordion" id="accordionExample4">
+                    <div class="card">
+                        <div class="card-header" id="heading4">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left text-decoration-none" type="button"
+                                        data-toggle="collapse"
+                                        data-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                                    <div class="row" >
+                                        <svg t="1595348641580" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="6741" width="128" height="128">
+                                            <path d="M64 425.322667l60.522667 35.029333v205.290667L512 889.92l387.477333-224.277333-0.021333-203.093334L960 427.498667v273.194666L512 960 64 700.693333V425.322667z m113.194667 57.237333l317.781333 187.178667v140.352L177.194667 622.890667V482.56z m673.408-1.066667v140.352l-317.802667 186.154667v-140.373333l317.802667-186.112zM177.194667 306.752l317.781333 187.178667v140.373333L177.194667 447.04v-140.330667z m673.408 0v140.330667l-317.802667 186.154666v-140.352l317.802667-186.133333zM245.290667 565.994667c-14.634667 0-26.496 11.882667-26.496 26.56 0 14.656 11.861333 26.538667 26.496 26.538666 14.613333 0 26.474667-11.882667 26.474666-26.538666 0-14.677333-11.861333-26.56-26.474666-26.56zM513.877333 64l336.725334 197.226667-336.704 197.226666-336.704-197.226666L513.898667 64zM243.413333 390.186667c-13.568 0-24.597333 11.029333-24.597333 24.64 0 13.632 11.029333 24.661333 24.597333 24.661333 13.589333 0 24.597333-11.029333 24.597334-24.661333 0-13.610667-11.008-24.64-24.597334-24.64z"
+                                                  fill="#2B85FB" p-id="6742"></path>
+                                        </svg>
+                                    </div>
+                                    <a class="nav-link" target="_blank" href="{{ url_for('index') }}">打开新页面</a>
+                                </button>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script type="text/javascript" src="static/js/static/jtopo-0.4.8-min.js"></script>
+
+        <script>
+        function myFunction() {
+            var x = document.forms["form1"]["inputAccessKeyId"].value;
+            var y = document.forms["form1"]["inputAccessKeySecret"].value;
+              if (x == "" ||  y == "") {
+                alert("必须填写 AccessKeyId 和 AccessKeySecret");
+                form1.inputAccessKeyId.focus();
+                return false;
+              }
+              else{
+                alert("点击提交后会有1～5分钟的后台运行时间，请耐心等待");
+                form1.submit();
+              }
+
+        }
+
+        </script>
+    </div>
+{% endblock%}
