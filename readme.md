@@ -45,7 +45,6 @@ flask run
 ![](static/img/save_img/02.png)
 ![](static/img/save_img/03.png)
 ![](static/img/save_img/04.png)
-![](static/img/save_img/05.png)
 
 ### 业务实例拓扑
 
