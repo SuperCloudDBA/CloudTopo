@@ -5,3 +5,7 @@ venv/
 __pycache__
 .DS_Store
 
+history/.*
+upload/.*
+
+

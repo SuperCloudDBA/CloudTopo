@@ -68,6 +68,23 @@ class OSHelper:
         else:
             return path
 
+    def delete_file(self, days_n, path):
+        """
+        删除指定目录中的超过 N 天的文件
+        :param days_n: 天数
+        :param path: 待删除文件所在目录
+        :return: None
+        """
+        for each_file in os.listdir(path):
+            file_name = os.path.join(path, each_file)
+            if os.path.isfile(file_name):
+                last_modify_time = os.stat(file_name).st_mtime
+                end_file_time = time.time() - 3600 * 24 * days_n
+                if end_file_time > last_modify_time:
+                    self.rmfile(file_name)
+            elif os.path.isdir(file_name):
+                self.rmdir(file_name)
+
 
 class ToExcel:
     def __init__(self, **kwargs):
@@ -130,7 +147,7 @@ class ToTopo:
                     product[_col - 1 + _row * 10]['elementType'] = "node"
                     product[_col - 1 + _row * 10]['id'] = str(uuid.uuid4())
                     product[_col - 1 + _row * 10]['Image'] = "{0}.png".format(
-                    product[_col - 1 + _row * 10]["instance_product"])
+                        product[_col - 1 + _row * 10]["instance_product"])
                     product[_col - 1 + _row * 10]["text"] = product[_col - 1 + _row * 10]["instance_id"]  # 实例ID
                     product[_col - 1 + _row * 10]["textPosition"] = "Bottom_Center"
                     product[_col - 1 + _row * 10]["larm"] = "Middle_Center"
@@ -196,7 +213,7 @@ class GetInfo:
                 {
                     'type': 'ecs',
                     'sheet_name': 'ECS',
-                    'list_name': ['产品', '实例ID', '实例描述', '内网地址', '地域', '状态',  '应用', '环境'],
+                    'list_name': ['产品', '实例ID', '实例描述', '内网地址', '地域', '状态', '应用', '环境'],
                     'list_keys': ['instance_product', 'instance_id', 'instance_description', 'connection_address',
                                   'region_id', 'status', 'APP', 'ENV']
 
@@ -503,6 +520,7 @@ class Custom:
 
         # print(json.dumps(instance_list, indent=2))
         datas = []
+        vip = []
 
         for instance_id in instance_list:
             # print(instance_id["tags"])
@@ -934,7 +952,8 @@ class Custom:
         for region_id in all_regions:
             # api不支持翻页，将pagesize设置足够大即可。
             try:
-                status_code, api_res = self.aliyun.common("dts", Action='DescribeSynchronizationJobs', RegionId=region_id,
+                status_code, api_res = self.aliyun.common("dts", Action='DescribeSynchronizationJobs',
+                                                          RegionId=region_id,
                                                           PageSize=100, )
                 # log_strings.append(json.dumps(api_res, indent=2, ensure_ascii=False))
             except Exception as e:
@@ -1009,7 +1028,7 @@ class Custom:
                 },
                 api_res.get("MigrationJobs", {}).get("MigrationJob", [])
             ))
-        # log_strings.append(json.dumps(instance_info_list, indent=2, ensure_ascii=False))
+            # log_strings.append(json.dumps(instance_info_list, indent=2, ensure_ascii=False))
             break
         return instance_info_list
 
@@ -1137,7 +1156,17 @@ def startup(**kwargs):
         f.write(template.render(**j_params))
 
     # 清理7天前的文件
-    # 待补充
+    # 删除 history 目录中7天前的文件
+    # 删除 static/js/json/中七天前的数据
+    directory = os.getcwd()
+    history = os.path.join(directory, "history")
+    json_dir = os.path.join(directory, "static/js/json")
+    excel_dir = os.path.join(directory, "upload")
+    # print(history)
+    # print(json_dir)
+    # print(excel_dir)
+    for waiting_for_rm_dir in [history, json_dir, excel_dir]:
+        os_api.delete_file(7, waiting_for_rm_dir)
 
     # print(topo_json)
     # print(json.dumps(log_strings, indent=2, ensure_ascii=False))

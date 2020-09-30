@@ -16,7 +16,7 @@ $(document).ready(function() {
 //            服务器载入绘制拓扑图
             $.ajax({
                 typt:"GET",
-                url:"/static/js/json/20200828-8c36eaf8-015b-40fa-acc9-f4b12ebc8c3d.json",
+                url:"/static/js/json/20200930-fe3c2c12-04ae-4284-9e69-5e4f43be6b7f.json",
                 dataType:"json",
                 success:function(data){
                     //业务容器
