@@ -13,10 +13,10 @@
 
 ### 第二期功能
 
-* 周期：2020-09-30～2020-10-15
+* 周期：2020-09-30～2020-11-15
 
 1. 拓扑图中添加节点的详细信息
-
+2. 业务实例拓扑根据业务环境level增加自动连线
 
 ## 使用帮助
 
@@ -58,7 +58,7 @@ flask run
 
 ![](static/img/save_img/07.png)
 ![](static/img/save_img/08.png)
-
+![](static/img/save_img/09.png)
 
 ```bash
 root@foundation0 cloudTopo]# virtualenv -p `which python3`  venv
