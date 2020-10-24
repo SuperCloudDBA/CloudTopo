@@ -298,6 +298,7 @@ class ToTopo:
         data_envs = []
         data_projects = []
         data_nodes = []
+        data_links = []
 
         # 0. 所有的容器
         containers = list(filter(lambda x: x.get("elementType") == "container", topo_json))
@@ -411,10 +412,60 @@ class ToTopo:
             print('{} 业务运行完毕 下一次的开始坐标 {} {}'.format(project, x, y))
 
         data = containers + data_envs + data_projects + data_nodes
-        print(json.dumps(data, indent=2, ensure_ascii=False))
+
+        # 1.2 循环所有data， // 同一个业务中统一环境中 level 1 与 level2；level2 与 level 3 ；level3 与level 4
+        #
+        #   {
+        #     "elementType": "link",
+        #     "nodeAid": "fa20d1c0-d262-4376-a412-42918a50140e",
+        #     "nodeZid": "d41f71b7-1f84-4f58-a6a1-64f541ea094f",
+        #     "text": "",
+        #     "fontColor": "0, 200, 255"
+        #   }
+        # 过滤出同一个业务统一环境
+
+        for project in projects:
+            print(project)
+            envs = list(map(lambda x: x.get("env"), data_nodes))
+            for env in set(envs):
+                print(env)
+                try:
+                    levels_set = set(map(lambda y: y.get("level"), list(
+                        filter(lambda x: x.get("project") == project and x.get("env") == env, data_nodes))))
+                except Exception as e:
+                    print(str(e))
+                else:
+                    if len(levels_set) > 1:
+                        levels = list(levels_set)
+                    else:
+                        continue
+
+                print(levels)
+                for i in range(len(levels)):
+                    print(levels[i])
+                    try:
+                        next_level = levels[i+1]
+                    except:
+                        break
+                    else:
+                        for data1 in list(filter(lambda x: x.get("project") == project and x.get("env") == env and x.get("level") == levels[i], data_nodes)):
+                            print(data1)
+                            for data2 in list(filter(lambda x: x.get("project") == project and x.get("env") == env and x.get("level") == next_level, data_nodes)):
+                                print(data2)
+                                data_links.append({
+                                    "elementType": "link",
+                                    "nodeAid": data1["id"],
+                                    "nodeZid": data2["id"],
+                                    "text": "",
+                                    "fontColor": "0, 200, 255"
+                                })
+
+        data_final = data + data_links
+        print(json.dumps(data_links, indent=2, ensure_ascii=False))
+        # print(json.dumps(data_final, indent=2, ensure_ascii=False))
         with open("online_test.json", 'w') as f:
-            f.write(json.dumps(data, indent=2, ensure_ascii=False))
-        return data
+            f.write(json.dumps(data_final, indent=2, ensure_ascii=False))
+        return data_final
 
 
 def startup(xlsx):
@@ -450,7 +501,6 @@ def startup(xlsx):
 
 
 if __name__ == "__main__":
-
     api = GetMyExcel('history_products-20200728.xlsx')
     json_list = api.get_sheet_data()
     topo_api = ToTopo(json_list)

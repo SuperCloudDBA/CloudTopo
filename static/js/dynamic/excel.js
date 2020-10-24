@@ -16,7 +16,7 @@ $(document).ready(function() {
 //            服务器载入绘制拓扑图
             $.ajax({
                 typt:"GET",
-                url:"/static/js/json/20200930-fe3c2c12-04ae-4284-9e69-5e4f43be6b7f.json",
+                url:"/static/js/json/20201024-570ec9f3-31e8-4754-8bf8-2b6c6e4c536a.json",
                 dataType:"json",
                 success:function(data){
                     //业务容器
@@ -26,7 +26,7 @@ $(document).ready(function() {
                             //业务节点
                             data.forEach(function(b){
                                 if(b.elementType == "node" && b.env == "all"  && b.project == c.text){
-                                    node = AddNode(b.x, b.y, b.text, b.Image, b.textPosition, b.level);
+                                    node = AddNode(b.x, b.y, b.text, b.Image, b.textPosition, b.level, b.id);
                                     yewu_container.add(node);
                                 }
                             }); //业务节点
@@ -38,7 +38,7 @@ $(document).ready(function() {
                                    data.forEach(function(b){
                                         //节点属于某个环境则创建节点加入业务容器，并加入对应的环境容器
                                         if(b.elementType == "node" && b.env == a.text && b.project == c.text){
-                                          node = AddNode(b.x, b.y, b.text, b.Image, b.textPosition, b.level, b.instance_id);
+                                          node = AddNode(b.x, b.y, b.text, b.Image, b.textPosition, b.level, b.id, b.instance_id);
                                           container.add(node);
                                           yewu_container.add(node);
                                         }
@@ -54,7 +54,7 @@ $(document).ready(function() {
                     //不属于业务容器的节点
                     data.forEach(function(d){
                         if(d.elementType == "node" && d.env=='固定'){
-                            node = AddNode(d.x, d.y, d.text, d.Image, d.textPosition, d.level, d.instance_id);
+                            node = AddNode(d.x, d.y, d.text, d.Image, d.textPosition, d.level, d.id, d.instance_id);
                             }
                     }); //不属于业务容器的节点
 
@@ -93,14 +93,15 @@ $(document).ready(function() {
 
 
 
-            function AddNode(x, y, text, img, textPosition, level, alarm)
+            function AddNode(x, y, text, img, textPosition, level, id, alarm)
             {
                 var node = new JTopo.Node(text);
                 node.serializedProperties.push('id');
                 node.serializedProperties.push('level');
                 node.setLocation(x ,y);
                 node.Image = '';
-                node.id = x*y;
+//                node.id = x*y;
+                node.id = id;
                 node.level = level;
                 if(null != img) {
                     node.setImage('/static/img/aliyun_img_45/' + img, true);
